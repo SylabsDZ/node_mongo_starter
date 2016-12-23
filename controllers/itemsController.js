@@ -32,9 +32,9 @@ exports.delete_item = function(req, res, next){
 }
 exports.update_item = function(req, res, next) {
  Item.findById(req.params.id, function(err, task){
-    item.title = req.body.title;
-    item.priority = req.body.priority;
-    item.is_completed = req.body.is_completed;
+    item.att1 = req.body.att1;
+    item.att2 = req.body.att2;
+    item.att3 = req.body.att3;
     item.save(function(err, item, count){
       console.log(" item has been updated!");
     })
