@@ -23,3 +23,20 @@ exports.list = function(req, res, next){
         res.json(items);
   });
 }
+exports.delete_item = function(req, res, next){
+  Item.findById(req.params.id, function(err, item){
+    item.remove(function(err, item) {
+      console.log("item deleted");
+    });
+  });
+}
+exports.update_item = function(req, res, next) {
+ Item.findById(req.params.id, function(err, task){
+    item.title = req.body.title;
+    item.priority = req.body.priority;
+    item.is_completed = req.body.is_completed;
+    item.save(function(err, item, count){
+      console.log(" item has been updated!");
+    })
+  });
+};
