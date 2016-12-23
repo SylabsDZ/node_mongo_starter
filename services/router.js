@@ -7,4 +7,10 @@ router.route('/items/insert')
 router.route('/items/list')
   .post(ItemsController.list);
 
+router.route('/items/delete/:id')
+  .get(ItemsController.delete_item);
+
+router.route('/items/update/:id')
+  .post(ItemController.update_item)
+
 module.exports = router;
