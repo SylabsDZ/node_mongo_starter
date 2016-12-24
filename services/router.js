@@ -11,6 +11,6 @@ router.route('/items/delete/:id')
   .get(ItemsController.delete_item);
 
 router.route('/items/update/:id')
-  .post(ItemController.update_item)
+  .post(ItemsController.update_item)
 
 module.exports = router;
