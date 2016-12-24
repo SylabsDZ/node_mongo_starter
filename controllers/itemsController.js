@@ -23,3 +23,20 @@ exports.list = function(req, res, next){
         res.json(items);
   });
 }
+exports.delete_item = function(req, res, next){
+  Item.findById(req.params.id, function(err, item){
+    item.remove(function(err, item) {
+      console.log("item deleted");
+    });
+  });
+}
+exports.update_item = function(req, res, next) {
+ Item.findById(req.params.id, function(err, task){
+    item.att1 = req.body.att1;
+    item.att2 = req.body.att2;
+    item.att3 = req.body.att3;
+    item.save(function(err, item, count){
+      console.log(" item has been updated!");
+    })
+  });
+};
