@@ -23,20 +23,34 @@ exports.list = function(req, res, next){
         res.json(items);
   });
 }
+
 exports.delete_item = function(req, res, next){
+  var id = req.params.id;
+  var message = "item has been deleted";
   Item.findById(req.params.id, function(err, item){
+    if (err) {
+      return res.json(err)
+    }
     item.remove(function(err, item) {
-      console.log("item deleted");
+      if(err){
+        return res.status(400).json(err);
+      }
+      return res.status(200).json({title: item.title, message: message});
     });
   });
 }
+
 exports.update_item = function(req, res, next) {
- Item.findById(req.params.id, function(err, task){
-    item.att1 = req.body.att1;
-    item.att2 = req.body.att2;
-    item.att3 = req.body.att3;
+  Item.findById(req.params.id, function(err, item){
+    if(err){ return res.json(err); }
+    item.title = req.body.title;
+    item.priority = req.body.priority;
+    item.is_completed = req.body.is_completed;
     item.save(function(err, item, count){
-      console.log(" item has been updated!");
+      if(err){
+       return res.status(400).json(err);
+     }
+     return res.status(200).json({status: "item has been updated!"});
     })
   });
 };
