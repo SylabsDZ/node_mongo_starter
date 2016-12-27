@@ -1,6 +1,6 @@
 # node_mongo_starter
 # Install Requirements :
-'npm install'
+      'npm install'
 
-# Commpile and Run :
-'npm start'
+# Run :
+      'npm start'
